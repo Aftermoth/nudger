@@ -358,7 +358,7 @@ for i = 0, 7 do
 	})
 end
 
-minetest.register_node("nudger:nudgequin", {
+minetest.register_node("nudger:nudgiquin", {
 	
 	description = "Nudgiquin",
 	drop = "nudger:nudgiquin",
