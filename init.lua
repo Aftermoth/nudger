@@ -41,7 +41,7 @@ local menu1 = {
 	"Store a node's rotation.",
 	"Equip stored rotation.",
 	"Toggle chat level.",
-	"Buy nudgequin for 20% tool wear.",
+	"Buy nudgiquin for 20% tool wear.",  -- "i" for less ambiguous pronunciation.
 	"",
 
 	"Nudge to stored rotation.",
@@ -57,6 +57,7 @@ local infos = {
 	"Shift+click to cycle options.",
 	"Right click to toggle menu.",
 	"Sorry, this nudger's too damaged.",
+	"Nudgiquin can be nudged freely with no tool damage.",
 }
 
 
@@ -213,6 +214,7 @@ local function shop(istk,plr)
 		if not stk:is_empty() then
 			minetest.item_drop(stk,plr,plr:get_pos())
 		end
+		say(infos[9],plr)
 	end
 end
 
