@@ -199,6 +199,7 @@ local function shop(istk,plr)
 			minetest.item_drop(stk,plr,plr:get_pos())
 		end
 		say("Nudgiquin can be nudged without tool damage.",plr)
+		say("It will also report its param2 with 'More chat.'",plr)
 	end
 end
 
