@@ -8,8 +8,9 @@ It does the same job as screwdriver in minetest_game, but differently.
 It keeps many of the same characteristics for familiarity, but with a strong emphasis on ease of use and understanding.
 
 recipe:
-default:copper_ingot
-group:stick
+
+  default:copper_ingot
+  group:stick
 
 
 ----
