@@ -1,4 +1,4 @@
-mineteset mod: nudger
+Minetest mod: nudger
 
 ==== Nudger ====
 
