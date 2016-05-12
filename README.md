@@ -9,8 +9,8 @@ It keeps many of the same characteristics for familiarity, but with a strong emp
 
 recipe:
 
-  default:copper_ingot
-  group:stick
+    default:copper_ingot
+    group:stick
 
 
 ----
