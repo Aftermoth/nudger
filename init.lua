@@ -343,7 +343,7 @@ minetest.register_node("nudger:nudgiquin", {
 	
 	description = "Nudgiquin",
 	drop = "nudger:nudgiquin",
-	tiles = {"nudgiquin_up.png","nudgiquin_dn.png","nudgiquin_rt.png","nudgiquin_lf.png","nudgiquin_fc.png","nudgiquin_bk.png"},
+	tiles = {"nq_up.png","nq_dn.png","nq_rt.png","nq_lf.png","nq_fc.png","nq_bk.png"},
 	paramtype2 = "facedir",
 	is_ground_content = false,
 	sunlight_propagates = true,
