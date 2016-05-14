@@ -63,11 +63,11 @@ local function edit_ok(pos, plr)
 	return true
 end
 
-local function node_ok(pos)
+local function node_ok(pos, plr)
 	local node = minetest.get_node_or_nil(pos)
 	local ndef = minetest.registered_nodes[node.name]
-	if not ndef or not ndef.paramtype2 == "facedir" or node.param2 == nil
-	or (ndef.drawtype == "nodebox" and not ndef.node_box.type == "fixed") then
+	if not ndef or not (ndef.paramtype2 == "facedir") or node.param2 == nil
+	or (ndef.drawtype == "nodebox" and not (ndef.node_box.type == "fixed")) then
 		say("Target can't be nudged.", plr)
 		return
 	end
@@ -111,7 +111,7 @@ local function axsgn(d)
 	else return 0, 2-d
 	end
 end
-local function choose_axis(plr,ptd,mode)
+local function choose_axis(plr, ptd, mode)
 	local axis, sign = face(ptd)
 	if mode == 0 then return axis, sign
 	elseif axis ~= 1 then
@@ -148,9 +148,9 @@ local map = {
 	},
 }
 
-local function rotate(istk,plr,ptd,mode,sgn)
+local function rotate(istk, plr, ptd, mode, sgn)
 	local pos = ptd.under
-	local node = node_ok(pos)
+	local node = node_ok(pos, plr)
 	if not node then return istk end
 	local p = (node.param2)%24
 	local q, r = math.floor(p/4), p%4
@@ -171,14 +171,14 @@ end
 
 -- == Store / Apply ==
 
-local function store(istk,pos)
-	local node = node_ok(pos)
+local function store(istk, pos, plr)
+	local node = node_ok(pos, plr)
 	if not node then return istk end
 	return tool_use(istk, 4, pos), node.param2
 end
 
-local function apply(istk,pos,p2)
-	local node = node_ok(pos)
+local function apply(istk, pos, plr, p2)
+	local node = node_ok(pos, plr)
 	if not node then return istk end
 	node.param2 = p2
 	minetest.swap_node(pos, node)
@@ -259,12 +259,12 @@ local function do_on_use(istk, plr, ptd)
 		local qp2
 		if pos and not once then
 			if mm == 0 then
-				if edit_ok(pos,plr) then
-					istk, qp2 = rotate(istk,plr,ptd,dr,1-2*sr)
+				if edit_ok(pos, plr) then
+					istk, qp2 = rotate(istk, plr, ptd, dr, 1-2*sr)
 				end
 			elseif mm == 2 or mm == 3 or mm == 9 then
 				if mm == 2 or mm == 9 then
-					istk, qp2 = store(istk,pos)
+					istk, qp2 = store(istk, pos, plr)
 					if qp2 then p2 = qp2 end
 					if sh==0 then say("Stored.", plr) end
 				end
@@ -272,8 +272,8 @@ local function do_on_use(istk, plr, ptd)
 				istk:set_name("nudger:nudger7")
 				say(menu1[8], plr)
 			elseif mm == 8 then
-				if edit_ok(pos,plr) then
-					istk, qp2 = apply(istk,pos,p2)
+				if edit_ok(pos, plr) then
+					istk, qp2 = apply(istk, pos, plr, p2)
 				end
 			end
 		end
