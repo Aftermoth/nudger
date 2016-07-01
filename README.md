@@ -7,6 +7,7 @@ Minetest mod: nudger
 
 * Cycles through nodes registered as alternative forms of a single functional node. For example, stairs may have straight, convex, and concave forms.
 
+:
 
     nudger.register_transforms(
         string. Shared prefix of node names. Can be ''.
@@ -14,7 +15,6 @@ Minetest mod: nudger
         integer. Tool wear in uses out of 255.
         function, called with (pos). Optional callback.
     )
-
 
 * A fully orientable node is provided to clearly demonstrate the result of operations.
 
