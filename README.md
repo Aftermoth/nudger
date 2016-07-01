@@ -1,11 +1,22 @@
 Minetest mod: nudger
+----
 
-==== Nudger ====
+* Rotates nodes in three dimensions using player-relative operations.
 
-Rotates nodes in three dimensions.
+* Stores a node's absolute orientation and applies it other nodes.
 
-It does the same job as screwdriver in minetest_game, but differently.
-It keeps many of the same characteristics for familiarity, but with a strong emphasis on ease of use and understanding.
+* Cycles through nodes registered as alternative forms of a single functional node. For example, stairs may have straight, convex, and concave forms.
+
+
+    nudger.register_transforms(
+        string. Shared prefix of node names. Can be ''.
+        table of strings. Node name remainders. Can include ''.
+        integer. Tool wear in uses out of 255.
+        function, called with (pos). Optional callback.
+    )
+
+* A fully orientable node is provided to clearly demonstrate the result of operations.
+
 
 recipe:
 
